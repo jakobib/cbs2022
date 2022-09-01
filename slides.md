@@ -7,11 +7,11 @@ author: Jakob Voß
 
 ## Outline
 
-- Current trends in metadata
+1. Current trends in metadata
 
-- Boundaries of metadata in CBS
+2. Boundaries of metadata in CBS
 
-- Breaking the boundaries
+3. Breaking the boundaries
 
 # Current trends in metadata
 
@@ -25,17 +25,15 @@ author: Jakob Voß
 
 ## Metadata getting fancy
 
-- **Diversity**: both metadata and actors
+- **Diversity** of both metadata and actors
 
-- **Data science**: more tools and people than ever
+- **Data science** has more tools and people than ever
 
 ## Decentralization
 
-- **Non-monolithic** data management solutions
+- **Integration** of metadata across multiple systems
 
-- **Integration** of diverse metadata
-
-- **Aggregation** in data warehouses, data lakes... for analysis only
+- **Aggregation** in data warehouses, data lakes... *for analysis*
 
 ## Metadata Management
 
@@ -45,38 +43,41 @@ author: Jakob Voß
 
 ## Challengens of current metadata trends
 
-- More diverse metadata must be integrated
+- More *diverse* metadata must be *integrated*
 
-- Different kind of people and tools (data scientist, data analyst, dara enigneers...)
+- Different people and tools (data scientist, data analyst, dara enigneers...)
 
-...
+- Growing expectations on quality and accessibility for multiple purposes
 
-## Examples
+## Example
 
-- books by publisher X held by library Y grouped by subject area
+- Books by publisher X held by library Y grouped by subject area?
 
-- Select 
+- Which conferences did members of research group Z present papers at?
+
 # Boundaries of metadata in CBS
 
-## Basic problem
+## Basic problems
 
-- CBS is a dinosaur (image: asteroid impact)
+- CBS is a specialized tool for managing data in PICA and MARC
 
-- PICA and MARC are arcane data formats
+- PICA and MARC are arcane and limited data formats
 
-Training people does not scale
-(how many actual users of CBS exist at all?): I'd guess ~100
+Limitation to record-field-subfield data.
 
-## More specific...
+## Limitations
 
-- No standard tools (e.g. query language, schema language
-- Not accessible 
+- Number of people doing data processing in CBS/PICA/MARC...
+
+- Number of accessible standards and tools
 
 ## Challenges
 
-- make it easier to use CBS data by others (self service is a must)
-- make it easier to use other data together with CBS data
-- make metadata workflows more transparent
+- Make it easier to use CBS data by others (self service is a must)
+
+- Make it easier to use other data together with CBS data
+
+- Make metadata workflows more transparent
 
 # Breaking the boundaries
 
@@ -94,7 +95,7 @@ Training people does not scale
 
 - APIs and tools that can be used by anyone
 
-## Beyond record-based data
+## Beyond record-field-subfield data
 
 - CBS knowledge graph
 
