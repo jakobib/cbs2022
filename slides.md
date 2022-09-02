@@ -15,7 +15,7 @@ author: Jakob Voß
 
 # Current trends in metadata
 
-## Obvious trends
+# Obvious trends {data-background-image=light-speed-travel-into-the-stars.png}
 
 - **Cloud infrastructure**: distributed servers
 
@@ -23,15 +23,15 @@ author: Jakob Voß
 
 - **Machine learning & AI**: not today
 
-## Metadata getting fancy
+## Metadata getting fancy {data-background-image=many-colorful-flowers.png}
 
 - **Diversity** of both metadata and actors
 
-- **Data science** has more tools and people than ever
+- **Data science** brings more tools and people than ever
 
-## Decentralization
+## Decentralization {data-background-image=decentralized-network.png}
 
-- **Integration** of metadata across multiple systems
+- **Integration** across multiple systems
 
 - **Aggregation** in data warehouses, data lakes... *for analysis*
 
@@ -41,19 +41,17 @@ author: Jakob Voß
 
 - **Active metadata** e.g. logging, alerts...
 
-## Challengens of current metadata trends
+## Main challengens of current metadata trends
 
-- More *diverse* metadata must be *integrated*
+- More **diverse** metadata must be **integrated**
 
-- Different people and tools (data scientist, data analyst, dara enigneers...)
+- Different **people and tools** (data scientist, data analyst, dara enigneers...)
 
-- Growing expectations on quality and accessibility for multiple purposes
+- Growing expectations on **quality and accessibility** for multiple purposes
 
 ## Example
 
-- Books by publisher X held by library Y grouped by subject area?
-
-- Which conferences did members of research group Z present papers at?
+Number of books by publisher X in subject area Y held by each library?
 
 # Boundaries of metadata in CBS
 
@@ -85,7 +83,7 @@ Limitation to record-field-subfield data.
 
 - It's complicated
 
-- Just two ideas
+- Two independent strategies
 
 ## Standardization
 
@@ -94,6 +92,8 @@ Limitation to record-field-subfield data.
 - PICA Patch format to express changes of PICA records
 
 - APIs and tools that can be used by anyone
+
+- Data languages *how* but *what*
 
 ## Beyond record-field-subfield data
 
@@ -114,4 +114,58 @@ From external data:
 - Links between authors, organizations, libraries, topics...
 - Additional information: names, current data...
 
+## Example
+
+Number of books by publisher X in subject area Y held by each library
+
+## Imperative solution (script)
+
+1. Build index of transitive sub-subjects of `Y`
+
+2. Get books by publisher `X`:
+  `pica filter "033.n="$"` (pica-rs)
+
+3. Reduce to books with subject in index
+
+4. Count libraries with holding of the book
+
+## SPARQL query
+
+Established query language for RDF
+
+~~~sparql
+SELECT ?library (COUNT(?book) as ?number) WHERE {
+  ?book dct:publisher <$X> .
+  ?book dct:subject/skos:broader* <$Y> .
+  ?bibframe bibframe:hasItem [ bibframe:heldBy ?library ] .
+} GROUP BY ?library
+~~~
+
+## Cypher query
+
+Most common query language for Graph Databases, being standardized as GQL by ISO
+
+~~~
+MATCH (b:Book)-[:PUBLISHER]->$X,
+      (b:Book)-[:ITEM]->()-[:HELDBY]->(library:Library)
+WHERE (b:Book)-[:SUBJECT]->$Y OR
+      (b:Book)-[:SUBJECT]->(s:Concept)-[:BROADER*]->$Y
+RETURN library, count(*)
+~~~
+
+## Takeaways
+
+- Standardization of data languages to process PICA & MARC:
+    - Avram
+    - PICA Path
+    - PICA Diff
+
+- From record-field-subfield to knowledge graphs
+
+## References
+
+- Avram
+- PICA Path
+- PICA Diff
+- pica-rs
 
