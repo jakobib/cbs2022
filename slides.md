@@ -15,7 +15,7 @@ author: Jakob Voß
 
 # Current trends in metadata
 
-# Obvious trends {data-background-image=light-speed-travel-into-the-stars.png}
+## Obvious trends {data-background-image=light-speed-travel-into-the-stars.png}
 
 - **Cloud infrastructure**: distributed servers
 
@@ -131,8 +131,6 @@ Number of books by publisher X in subject area Y held by each library
 
 ## SPARQL query
 
-Established query language for RDF
-
 ~~~sparql
 SELECT ?library (COUNT(?book) as ?number) WHERE {
   ?book dct:publisher <$X> .
@@ -141,9 +139,9 @@ SELECT ?library (COUNT(?book) as ?number) WHERE {
 } GROUP BY ?library
 ~~~
 
-## Cypher query
+Established query language for RDF
 
-Most common query language for Graph Databases, being standardized as GQL by ISO
+## Cypher query
 
 ~~~
 MATCH (b:Book)-[:PUBLISHER]->$X,
@@ -152,6 +150,8 @@ WHERE (b:Book)-[:SUBJECT]->$Y OR
       (b:Book)-[:SUBJECT]->(s:Concept)-[:BROADER*]->$Y
 RETURN library, count(*)
 ~~~
+
+Most common query language for Graph Databases, being standardized as GQL by ISO
 
 ## Takeaways
 
