@@ -10,7 +10,7 @@
 .reveal h1 {
   text-shadow: 0 0 0.2em var(--shadow), 0 0 0.2em var(--shadow), 0 0 0.2em var(--shadow), 0 0 0.2em var(--shadow);
 }
-h2, section > p, section > ul, section > ol {
+h2, pre, section > p, section > ul, section > ol {
   background: rgba(255,255,255,0.8);
   box-shadow: 0 0 0.2em #fff;
   padding: 0 1em;

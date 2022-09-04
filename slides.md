@@ -3,9 +3,11 @@ title: Breaking the boundaries of current metadata
 subtitle: a perspective from VZG
 date: 2022-09-06
 author: Jakob Voß
+title-slide-attributes:
+  data-background-image: vzg-slides-background.png
 ---
 
-## Outline
+## Outline {data-background=vzg-slides-background.png}
 
 1. Current trends in metadata
 
@@ -13,7 +15,7 @@ author: Jakob Voß
 
 3. Breaking the boundaries
 
-# Current trends in metadata
+# Current trends in metadata {data-background=vzg-slides-background.png}
 
 ## Obvious trends {data-background-image=light-speed-travel-into-the-stars.png}
 
@@ -35,103 +37,120 @@ author: Jakob Voß
 
 - **Aggregation** in data warehouses, data lakes... *for analysis*
 
-## Metadata Management
+## Metadata Management {data-background-image=busy-clerk-in-a-library.png}
 
 - **Governance** by quality and observation
 
 - **Active metadata** e.g. logging, alerts...
 
-## Main challengens of current metadata trends
+## Challenges summarized {data-background-image=busy-clerk-in-a-library.png}
 
 - More **diverse** metadata must be **integrated**
 
-- Different **people and tools** (data scientist, data analyst, dara enigneers...)
+- Different **people and tools**:\
+  *data scientist, data analyst, data enigneers...*
 
 - Growing expectations on **quality and accessibility** for multiple purposes
 
-## Example
+## Example {data-background=flock-of-books.png}
 
-Number of books by publisher X in subject area Y held by each library?
+Number of books\
+by publisher *X*\
+in subject area *Y*\
+held by each library
 
-# Boundaries of metadata in CBS
+# Boundaries of metadata in CBS {data-background=book-fortress.png}
 
-## Basic problems
+## Basic problems {data-background=book-fortress.png}
 
-- CBS is a specialized tool for managing data in PICA and MARC
+- CBS is a **specialized tool** for managing\
+  data in PICA and MARC
 
-- PICA and MARC are arcane and limited data formats
+- PICA and MARC are arcane, limited data formats:\
+  *record-field-subfield*
 
-Limitation to record-field-subfield data.
+## Limitations {data-background=book-fortress.png}
 
-## Limitations
+- **Number of people** doing data processing in CBS/PICA/MARC...
 
-- Number of people doing data processing in CBS/PICA/MARC...
+- Little accessible **standards and tools**
 
-- Number of accessible standards and tools
+## Challenges {data-background=book-fortress.png}
 
-## Challenges
+- Facilitate **use of CBS** data by others
 
-- Make it easier to use CBS data by others (self service is a must)
+- Facilitate use of **external data** with CBS
 
-- Make it easier to use other data together with CBS data
+- Make metadata **workflows more transparent**
 
-- Make metadata workflows more transparent
+# Breaking the boundaries {data-background=rainbow.png}
 
-# Breaking the boundaries
-
-## Confession
+## Confession {data-background-image=busy-clerk-in-a-library.png}
 
 - It's complicated
 
 - Two independent strategies
 
-## Standardization
+## 1. Standardization {data-background=rainbow.png}
 
-- Avram Schema format for MARC- and PICA-based formats
+- **Avram Schemas** for MARC- and PICA-formats
 
-- PICA Patch format to express changes of PICA records
+- **PICA Patch format** formalizes changes records
 
-- APIs and tools that can be used by anyone
+- **APIs and tools** that can be used by anyone
 
-- Data languages *how* but *what*
+## Advantages {data-background=rainbow.png}
 
-## Beyond record-field-subfield data
+- Based on **common web standards** (JSON...)
 
-- CBS knowledge graph
+- **Accessible** by more people with diverse needs
 
-- Expose via (RDF, Graph Database...)
+- Not *how* (*take field X, filter by condition Y...*)\
+  but ***what*** (*records with specific condition...*)
 
-## CBS knowledge graph
+<!-- TODO: following slides -->
 
-From records in CBS:
+## 2. Knowledge graphs {data-background-image=decentralized-network.png}
 
-- Hierachical Record model
-- Links between records via `$9`
-- Links via identifiers (DOI, ISSN...)
+- Records in CBS
+    - Hierachical Record model (record level)
+    - Links between records via `$9` and PPN
+    - Links via identifiers (DOI, ISSN...)
 
-From external data:
+- External data
+    - Author affiliation, addresses, names...
 
-- Links between authors, organizations, libraries, topics...
-- Additional information: names, current data...
+## Knowledge graph
 
-## Example
+- Create **CBS Knowledge Graph**
 
-Number of books by publisher X in subject area Y held by each library
+- **Expose** via RDF or Graph Database
 
-## Imperative solution (script)
+- **Integrate** with external Linked Data
+
+## Example {data-background=flock-of-books.png}
+
+Number of books\
+by publisher *X*\
+in subject area *Y*\
+held by each library
+
+## Imperative script {data-background=flock-of-books.png}
 
 1. Build index of transitive sub-subjects of `Y`
 
-2. Get books by publisher `X`:
+2. Get books by publisher *X*\
   `pica filter "033.n="$"` (pica-rs)
 
 3. Reduce to books with subject in index
 
 4. Count libraries with holding of the book
 
-## SPARQL query
+## SPARQL query {data-background=flock-of-books.png}
 
-~~~sparql
+Established query language for RDF
+
+~~~
 SELECT ?library (COUNT(?book) as ?number) WHERE {
   ?book dct:publisher <$X> .
   ?book dct:subject/skos:broader* <$Y> .
@@ -139,9 +158,9 @@ SELECT ?library (COUNT(?book) as ?number) WHERE {
 } GROUP BY ?library
 ~~~
 
-Established query language for RDF
+## Cypher query {data-background=flock-of-books.png}
 
-## Cypher query
+Most common query language for Graph Databases, being standardized as GQL by ISO
 
 ~~~
 MATCH (b:Book)-[:PUBLISHER]->$X,
@@ -151,21 +170,17 @@ WHERE (b:Book)-[:SUBJECT]->$Y OR
 RETURN library, count(*)
 ~~~
 
-Most common query language for Graph Databases, being standardized as GQL by ISO
+## Takeaways {data-background-image=many-colorful-flowers.png}
 
-## Takeaways
+- Standardization of data languages to process PICA & MARC
+    - **Avram Schema** format
+    - **PICA Diff** format
 
-- Standardization of data languages to process PICA & MARC:
-    - Avram
-    - PICA Path
-    - PICA Diff
+- From record-field-subfield to **knowledge graphs**
 
-- From record-field-subfield to knowledge graphs
+## References {data-background-image=many-colorful-flowers.png}
 
-## References
-
-- Avram
-- PICA Path
-- PICA Diff
-- pica-rs
-
+- <https://format.gbv.de/schema/avram/specification>
+- <https://format.gbv.de/pica/patch>
+- <https://deutsche-nationalbibliothek.github.io/pica-rs/>
+- Background images AI created with stable diffusion and midjourney

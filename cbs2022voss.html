@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Jakob Voß">
+  <meta name="dcterms.date" content="2022-09-06">
+  <title>Breaking the boundaries of current metadata</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
+  <style>
+    .reveal .sourceCode {  /* see #7635 */
+      overflow: visible;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" data-background-image="vzg-slides-background.png">
+  <h1 class="title">Breaking the boundaries of current metadata</h1>
+  <p class="subtitle">a perspective from VZG</p>
+  <p class="author">Jakob Voß</p>
+  <p class="date">2022-09-06</p>
+</section>
+
+<section id="outline" class="slide level2"
+data-background="vzg-slides-background.png">
+<h2 data-background="vzg-slides-background.png">Outline</h2>
+<ol type="1">
+<li><p>Current trends in metadata</p></li>
+<li><p>Boundaries of metadata in CBS</p></li>
+<li><p>Breaking the boundaries</p></li>
+</ol>
+</section>
+<section>
+<section id="current-trends-in-metadata"
+class="title-slide slide level1"
+data-background="vzg-slides-background.png">
+<h1 data-background="vzg-slides-background.png">Current trends in
+metadata</h1>
+
+</section>
+<section id="obvious-trends" class="slide level2"
+data-background-image="light-speed-travel-into-the-stars.png">
+<h2
+data-background-image="light-speed-travel-into-the-stars.png">Obvious
+trends</h2>
+<ul>
+<li><p><strong>Cloud infrastructure</strong>: distributed
+servers</p></li>
+<li><p><strong>Big data</strong>: continuing growth</p></li>
+<li><p><strong>Machine learning &amp; AI</strong>: not today</p></li>
+</ul>
+</section>
+<section id="metadata-getting-fancy" class="slide level2"
+data-background-image="many-colorful-flowers.png">
+<h2 data-background-image="many-colorful-flowers.png">Metadata getting
+fancy</h2>
+<ul>
+<li><p><strong>Diversity</strong> of both metadata and actors</p></li>
+<li><p><strong>Data science</strong> brings more tools and people than
+ever</p></li>
+</ul>
+</section>
+<section id="decentralization" class="slide level2"
+data-background-image="decentralized-network.png">
+<h2
+data-background-image="decentralized-network.png">Decentralization</h2>
+<ul>
+<li><p><strong>Integration</strong> across multiple systems</p></li>
+<li><p><strong>Aggregation</strong> in data warehouses, data lakes…
+<em>for analysis</em></p></li>
+</ul>
+</section>
+<section id="metadata-management" class="slide level2"
+data-background-image="busy-clerk-in-a-library.png">
+<h2 data-background-image="busy-clerk-in-a-library.png">Metadata
+Management</h2>
+<ul>
+<li><p><strong>Governance</strong> by quality and observation</p></li>
+<li><p><strong>Active metadata</strong> e.g. logging, alerts…</p></li>
+</ul>
+</section>
+<section id="challenges-summarized" class="slide level2"
+data-background-image="busy-clerk-in-a-library.png">
+<h2 data-background-image="busy-clerk-in-a-library.png">Challenges
+summarized</h2>
+<ul>
+<li><p>More <strong>diverse</strong> metadata must be
+<strong>integrated</strong></p></li>
+<li><p>Different <strong>people and tools</strong>:<br />
+<em>data scientist, data analyst, data enigneers…</em></p></li>
+<li><p>Growing expectations on <strong>quality and
+accessibility</strong> for multiple purposes</p></li>
+</ul>
+</section>
+<section id="example" class="slide level2"
+data-background="flock-of-books.png">
+<h2 data-background="flock-of-books.png">Example</h2>
+<p>Number of books<br />
+by publisher <em>X</em><br />
+in subject area <em>Y</em><br />
+held by each library</p>
+</section></section>
+<section>
+<section id="boundaries-of-metadata-in-cbs"
+class="title-slide slide level1" data-background="book-fortress.png">
+<h1 data-background="book-fortress.png">Boundaries of metadata in
+CBS</h1>
+
+</section>
+<section id="basic-problems" class="slide level2"
+data-background="book-fortress.png">
+<h2 data-background="book-fortress.png">Basic problems</h2>
+<ul>
+<li><p>CBS is a <strong>specialized tool</strong> for managing<br />
+data in PICA and MARC</p></li>
+<li><p>PICA and MARC are arcane, limited data formats:<br />
+<em>record-field-subfield</em></p></li>
+</ul>
+</section>
+<section id="limitations" class="slide level2"
+data-background="book-fortress.png">
+<h2 data-background="book-fortress.png">Limitations</h2>
+<ul>
+<li><p><strong>Number of people</strong> doing data processing in
+CBS/PICA/MARC…</p></li>
+<li><p>Little accessible <strong>standards and tools</strong></p></li>
+</ul>
+</section>
+<section id="challenges" class="slide level2"
+data-background="book-fortress.png">
+<h2 data-background="book-fortress.png">Challenges</h2>
+<ul>
+<li><p>Facilitate <strong>use of CBS</strong> data by others</p></li>
+<li><p>Facilitate use of <strong>external data</strong> with
+CBS</p></li>
+<li><p>Make metadata <strong>workflows more
+transparent</strong></p></li>
+</ul>
+</section></section>
+<section>
+<section id="breaking-the-boundaries" class="title-slide slide level1"
+data-background="rainbow.png">
+<h1 data-background="rainbow.png">Breaking the boundaries</h1>
+
+</section>
+<section id="confession" class="slide level2"
+data-background-image="busy-clerk-in-a-library.png">
+<h2 data-background-image="busy-clerk-in-a-library.png">Confession</h2>
+<ul>
+<li><p>It’s complicated</p></li>
+<li><p>Two independent strategies</p></li>
+</ul>
+</section>
+<section id="standardization" class="slide level2"
+data-background="rainbow.png">
+<h2 data-background="rainbow.png">1. Standardization</h2>
+<ul>
+<li><p><strong>Avram Schemas</strong> for MARC- and
+PICA-formats</p></li>
+<li><p><strong>PICA Patch format</strong> formalizes changes
+records</p></li>
+<li><p><strong>APIs and tools</strong> that can be used by
+anyone</p></li>
+</ul>
+</section>
+<section id="advantages" class="slide level2"
+data-background="rainbow.png">
+<h2 data-background="rainbow.png">Advantages</h2>
+<ul>
+<li><p>Based on <strong>common web standards</strong> (JSON…)</p></li>
+<li><p><strong>Accessible</strong> by more people with diverse
+needs</p></li>
+<li><p>Not <em>how</em> (<em>take field X, filter by condition
+Y…</em>)<br />
+but <strong><em>what</em></strong> (<em>records with specific
+condition…</em>)</p></li>
+</ul>
+<!-- TODO: following slides -->
+</section>
+<section id="knowledge-graphs" class="slide level2"
+data-background-image="decentralized-network.png">
+<h2 data-background-image="decentralized-network.png">2. Knowledge
+graphs</h2>
+<ul>
+<li>Records in CBS
+<ul>
+<li>Hierachical Record model (record level)</li>
+<li>Links between records via <code>$9</code> and PPN</li>
+<li>Links via identifiers (DOI, ISSN…)</li>
+</ul></li>
+<li>External data
+<ul>
+<li>Author affiliation, addresses, names…</li>
+</ul></li>
+</ul>
+</section>
+<section id="knowledge-graph" class="slide level2">
+<h2>Knowledge graph</h2>
+<ul>
+<li><p>Create <strong>CBS Knowledge Graph</strong></p></li>
+<li><p><strong>Expose</strong> via RDF or Graph Database</p></li>
+<li><p><strong>Integrate</strong> with external Linked Data</p></li>
+</ul>
+</section>
+<section id="example-1" class="slide level2"
+data-background="flock-of-books.png">
+<h2 data-background="flock-of-books.png">Example</h2>
+<p>Number of books<br />
+by publisher <em>X</em><br />
+in subject area <em>Y</em><br />
+held by each library</p>
+</section>
+<section id="imperative-script" class="slide level2"
+data-background="flock-of-books.png">
+<h2 data-background="flock-of-books.png">Imperative script</h2>
+<ol type="1">
+<li><p>Build index of transitive sub-subjects of <code>Y</code></p></li>
+<li><p>Get books by publisher <em>X</em><br />
+<code>pica filter "033.n="$"</code> (pica-rs)</p></li>
+<li><p>Reduce to books with subject in index</p></li>
+<li><p>Count libraries with holding of the book</p></li>
+</ol>
+</section>
+<section id="sparql-query" class="slide level2"
+data-background="flock-of-books.png">
+<h2 data-background="flock-of-books.png">SPARQL query</h2>
+<p>Established query language for RDF</p>
+<pre><code>SELECT ?library (COUNT(?book) as ?number) WHERE {
+  ?book dct:publisher &lt;$X&gt; .
+  ?book dct:subject/skos:broader* &lt;$Y&gt; .
+  ?bibframe bibframe:hasItem [ bibframe:heldBy ?library ] .
+} GROUP BY ?library</code></pre>
+</section>
+<section id="cypher-query" class="slide level2"
+data-background="flock-of-books.png">
+<h2 data-background="flock-of-books.png">Cypher query</h2>
+<p>Most common query language for Graph Databases, being standardized as
+GQL by ISO</p>
+<pre><code>MATCH (b:Book)-[:PUBLISHER]-&gt;$X,
+      (b:Book)-[:ITEM]-&gt;()-[:HELDBY]-&gt;(library:Library)
+WHERE (b:Book)-[:SUBJECT]-&gt;$Y OR
+      (b:Book)-[:SUBJECT]-&gt;(s:Concept)-[:BROADER*]-&gt;$Y
+RETURN library, count(*)</code></pre>
+</section>
+<section id="takeaways" class="slide level2"
+data-background-image="many-colorful-flowers.png">
+<h2 data-background-image="many-colorful-flowers.png">Takeaways</h2>
+<ul>
+<li>Standardization of data languages to process PICA &amp; MARC
+<ul>
+<li><strong>Avram Schema</strong> format</li>
+<li><strong>PICA Diff</strong> format</li>
+</ul></li>
+<li>From record-field-subfield to <strong>knowledge graphs</strong></li>
+</ul>
+</section>
+<section id="references" class="slide level2"
+data-background-image="many-colorful-flowers.png">
+<h2 data-background-image="many-colorful-flowers.png">References</h2>
+<ul>
+<li><a href="https://format.gbv.de/schema/avram/specification"
+class="uri">https://format.gbv.de/schema/avram/specification</a></li>
+<li><a href="https://format.gbv.de/pica/patch"
+class="uri">https://format.gbv.de/pica/patch</a></li>
+<li><a href="https://deutsche-nationalbibliothek.github.io/pica-rs/"
+class="uri">https://deutsche-nationalbibliothek.github.io/pica-rs/</a></li>
+<li>Background images AI created with stable diffusion and
+midjourney</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
+
+  <!-- reveal.js plugins -->
+  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
+  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: true,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'bottom-right',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: false,
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: false,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: true,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'default',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: true,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'fade',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'fade',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // reveal.js plugins
+        plugins: [
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    </body>
+</html>
