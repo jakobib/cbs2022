@@ -179,6 +179,27 @@ records</p></li>
 anyone</p></li>
 </ul>
 </section>
+<section id="avram-schemas" class="slide level2"
+data-background="rainbow.png">
+<h2 data-background="rainbow.png">Avram Schemas</h2>
+<ul>
+<li>List fields and subfields with repeatability</li>
+<li>Allowed values by regex code lists</li>
+<li>Same validation on server, client…</li>
+</ul>
+</section>
+<section id="pica-patch-format" class="slide level2"
+data-background="rainbow.png">
+<h2 data-background="rainbow.png">PICA Patch format</h2>
+<ul>
+<li>Descriptive changes to records</li>
+<li>Record versioning</li>
+<li>Applicable on server, client…</li>
+</ul>
+<pre><code>  003@ $012345X
+- 021A $aA book
++ 021A $aA good book$hfor reading</code></pre>
+</section>
 <section id="advantages" class="slide level2"
 data-background="rainbow.png">
 <h2 data-background="rainbow.png">Advantages</h2>
@@ -189,7 +210,7 @@ needs</p></li>
 <li><p>Not <em>how</em> (<em>take field X, filter by condition
 Y…</em>)<br />
 but <strong><em>what</em></strong> (<em>records with specific
-condition…</em>)</p></li>
+condition…</em>): imperative vs. descriptive</p></li>
 </ul>
 <!-- TODO: following slides -->
 </section>
@@ -262,12 +283,14 @@ RETURN library, count(*)</code></pre>
 data-background-image="many-colorful-flowers.png">
 <h2 data-background-image="many-colorful-flowers.png">Takeaways</h2>
 <ul>
-<li>Standardization of data languages to process PICA &amp; MARC
+<li><p>Standardization of data languages to process PICA &amp; MARC</p>
 <ul>
 <li><strong>Avram Schema</strong> format</li>
 <li><strong>PICA Diff</strong> format</li>
 </ul></li>
-<li>From record-field-subfield to <strong>knowledge graphs</strong></li>
+<li><p>Declarative vs. imperative</p></li>
+<li><p>From record-field-subfield to <strong>knowledge
+graphs</strong></p></li>
 </ul>
 </section>
 <section id="references" class="slide level2"

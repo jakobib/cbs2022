@@ -99,6 +99,24 @@ held by each library
 
 - **APIs and tools** that can be used by anyone
 
+## Avram Schemas {data-background=rainbow.png}
+
+- List fields and subfields with repeatability
+- Allowed values by regex code lists
+- Same validation on server, client...
+
+## PICA Patch format {data-background=rainbow.png}
+
+- Descriptive changes to records
+- Record versioning
+- Applicable on server, client...
+
+~~~
+  003@ $012345X
+- 021A $aA book
++ 021A $aA good book$hfor reading
+~~~
+
 ## Advantages {data-background=rainbow.png}
 
 - Based on **common web standards** (JSON...)
@@ -106,7 +124,8 @@ held by each library
 - **Accessible** by more people with diverse needs
 
 - Not *how* (*take field X, filter by condition Y...*)\
-  but ***what*** (*records with specific condition...*)
+  but ***what*** (*records with specific condition...*):
+  imperative vs. descriptive
 
 <!-- TODO: following slides -->
 
@@ -175,6 +194,7 @@ RETURN library, count(*)
 - Standardization of data languages to process PICA & MARC
     - **Avram Schema** format
     - **PICA Diff** format
+- Declarative vs. imperative
 
 - From record-field-subfield to **knowledge graphs**
 
